@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Fable 5.2 值得用吗？5 分钟按角色看懂</title>
+<meta name="description" content="Claude Fable 5.2 模型卡 5 分钟版：变了什么、六类人各自怎么用、任务该派给谁、怎么不花冤枉钱。">
+<meta property="og:title" content="Claude Fable 5.2 值得用吗？5 分钟按角色看懂">
+<meta property="og:description" content="官方建议日常从 Opus 5.5 开始；六类人各自怎么用、任务派给谁、怎么省钱。">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232456d6'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#f7f4ed; --surface:#fffdf8; --ink:#171512; --ink-2:#3c3830; --muted:#726c60;
+    --line:#e3dccd; --line-strong:#c9c0af;
+    --blue:#2456d6; --blue-deep:#173fb0; --blue-soft:#e9eefb;
+    --green:#0f7a5a; --green-soft:#e6f4ee;
+    --amber:#a8580c; --amber-soft:#fbefe1;
+    --red:#a12f2f; --red-soft:#fbeaea;
+    --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",Georgia,serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);
+    background-image:radial-gradient(900px 460px at 92% -8%, #eef1f8 0%, rgba(247,244,237,0) 62%);
+    color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:#dbe4fb}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(36,86,214,.25)}
+  a:hover{border-bottom-color:var(--blue)}
+  .progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:50}
+  .progress span{display:block;height:100%;width:0;background:var(--blue);transition:width .1s linear}
+  .wrap{max-width:900px;margin:0 auto;padding:0 30px 100px}
+
+  .top{display:flex;justify-content:space-between;align-items:center;padding:22px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+  .top a{border:none;color:var(--blue)}
+  .hero{padding:44px 0 26px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,7vw,68px);line-height:1.1;letter-spacing:-.015em;margin:16px 0 18px;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--muted)}
+  .deck{font-size:19px;line-height:1.85;color:var(--ink-2);max-width:720px;margin:0}
+  .deck b{color:var(--ink)}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chip{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);border:1px solid var(--line-strong);background:rgba(255,253,248,.7);padding:4px 10px;border-radius:999px}
+  .chip b{color:var(--blue-deep);font-weight:600}
+
+  .roles-nav{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 4px}
+  .roles-nav a{font-size:13px;border:1px solid var(--line-strong);background:var(--surface);padding:5px 12px;border-radius:999px;color:var(--ink-2)}
+  .roles-nav a:hover{border-color:var(--blue);color:var(--blue-deep);text-decoration:none}
+
+  section{padding-top:44px;margin-top:44px;border-top:1px solid var(--line);scroll-margin-top:16px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--blue);margin-bottom:6px}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,38px);line-height:1.3;margin:0 0 10px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 26px;max-width:720px}
+  h3{font-family:var(--serif);font-size:22px;margin:34px 0 12px;font-weight:600}
+  p{margin:0 0 14px;color:var(--ink-2)}
+  strong{color:var(--ink);font-weight:600}
+  mark{background:linear-gradient(transparent 62%, #f5dfa8 62%);color:inherit;padding:0 1px}
+
+  .pull{border-left:2px solid var(--blue);padding:2px 0 2px 20px;margin:26px 0 0;font-family:var(--serif);font-size:21px;line-height:1.8}
+  .pull span{display:block;font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:6px}
+
+  .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:22px}
+  .num{background:var(--surface);padding:20px 18px}
+  .num .k{font-size:12px;color:var(--muted)}
+  .num .v{font-family:var(--serif);font-size:36px;line-height:1.2;margin:8px 0 2px;letter-spacing:-.01em}
+  .num .v small{font-size:13px;color:var(--muted);font-family:var(--sans);margin-left:3px}
+  .num p{font-size:12.5px;margin:0;color:var(--muted);line-height:1.7}
+
+  .roles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .role{border:1px solid var(--line);background:var(--surface);padding:20px 20px 18px;scroll-margin-top:16px}
+  .role .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--blue);margin-bottom:6px}
+  .role h4{font-size:18px;margin:0 0 8px;font-weight:600;line-height:1.4}
+  .role .get{font-size:13.5px;color:var(--ink-2);margin:0 0 12px;line-height:1.75}
+  .role .get b{color:var(--ink)}
+  .role dl{margin:0}
+  .role dt{font-size:11px;letter-spacing:.08em;color:var(--muted);margin-top:10px}
+  .role dd{margin:3px 0 0;font-size:13.5px;line-height:1.75;color:var(--ink-2)}
+  .role .warn{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:#7a4a12;line-height:1.7}
+  .role .warn b{color:var(--amber)}
+
+  .table-wrap{border:1px solid var(--line);background:var(--surface);overflow-x:auto;margin-top:8px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7}
+  th{text-align:left;font-size:11.5px;letter-spacing:.06em;color:var(--muted);font-weight:600;padding:12px 14px;border-bottom:1px solid var(--line-strong);background:#faf6ed;white-space:nowrap}
+  td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  td:first-child{color:var(--ink);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#fdfaf3}
+  .num-cell{font-family:var(--mono);font-size:.95em}
+
+  .steps{counter-reset:s;display:grid;gap:12px;margin-top:10px}
+  .step{display:grid;grid-template-columns:34px 1fr;gap:14px;border-top:1px solid var(--line);padding-top:14px}
+  .step::before{counter-increment:s;content:counter(s);font-family:var(--serif);font-size:22px;color:var(--line-strong);line-height:1.3}
+  .step h4{margin:0 0 4px;font-size:16.5px;font-weight:600}
+  .step p{margin:0;font-size:14px;line-height:1.8}
+
+  .risk{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px}
+  .risk div{background:var(--surface);padding:18px}
+  .risk b{display:block;font-family:var(--serif);font-size:22px;margin-bottom:4px}
+  .risk span{font-size:13px;line-height:1.75;color:var(--muted)}
+  .risk span em{font-style:normal;color:var(--ink-2)}
+
+  .take{border:1px solid var(--line);background:var(--surface);padding:24px 26px;margin-top:20px}
+  .take ol{margin:0;padding-left:20px}
+  .take li{font-size:15.5px;line-height:1.95;margin-bottom:8px;color:var(--ink-2)}
+  .take li:last-child{margin-bottom:0}
+  .take b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);margin-top:50px;padding-top:18px;font-size:11.5px;color:var(--muted);line-height:1.8}
+  footer p{margin:0 0 6px;font-size:11.5px;color:var(--muted)}
+
+  @media (max-width:760px){
+    body{font-size:16px}
+    .wrap{padding:0 20px 70px}
+    .hero{padding:30px 0 20px}
+    h1{font-size:clamp(36px,10vw,46px)}
+    .deck{font-size:16.5px}
+    .nums{grid-template-columns:1fr}
+    .roles{grid-template-columns:1fr}
+    .risk{grid-template-columns:1fr}
+    section{margin-top:36px;padding-top:34px}
+    th,td{padding:10px 12px}
+  }
+  @media print{
+    @page{size:A4;margin:14mm 13mm}
+    body{background:#fff;font-size:10.5pt}
+    .wrap{max-width:none;padding:0}
+    .top,.roles-nav,.progress{display:none}
+    .hero{padding:0 0 14px;border-bottom:none}
+    h1{font-size:28pt}
+    section{margin-top:18px;padding-top:16px;break-inside:auto}
+    .role,.num,.risk div,.take,.table-wrap tr{break-inside:avoid;page-break-inside:avoid}
+    .roles{display:block;margin-top:6px}
+    .role{margin:0 0 10px}
+    h2,h3,.kicker{break-after:avoid;page-break-after:avoid}
+    .nums{grid-template-columns:repeat(3,1fr)}
+    .risk{grid-template-columns:repeat(3,1fr)}
+    a{color:inherit;border:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress"><span id="bar"></span></div>
+<div class="wrap">
+
+  <div class="top">
+    <span>MODEL CARD · 5 MIN</span>
+    <span style="color:var(--muted)">无需登录 · 打开即读</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">CLAUDE FABLE 5.2 / MYTHOS 5.2</div>
+    <h1>先别急着换。<br><em>它是一把牛刀。</em></h1>
+    <p class="deck">Fable 5.2 强的是“长活”，不是“日常”。官方自己建议：<b>大多数编码和知识工作，先从 Opus 5.5 开始</b>。这版只讲三件事——变了什么、你该用哪个、怎么不花冤枉钱。</p>
+    <div class="meta">
+      <span class="chip">264 页系统卡</span>
+      <span class="chip">$8 / $40 每百万 token</span>
+      <span class="chip">1M 上下文 · 128K 输出</span>
+      <span class="chip">阅读 5–6 分钟</span>
+    </div>
+  </header>
+
+  <div class="roles-nav">
+    <a href="#dev">开发者</a>
+    <a href="#product">产品 / 内容</a>
+    <a href="#research">研究者 / 学生</a>
+    <a href="#manager">管理者 / 采购</a>
+    <a href="#sec">安全 / 合规</a>
+    <a href="#user">普通用户</a>
+  </div>
+
+  <!-- 1 -->
+  <section id="s1" style="border-top:none;margin-top:0;padding-top:36px">
+    <div class="kicker">01 · 一句话</div>
+    <h2>切硬骨头值，切葱花不值</h2>
+    <p>它能连续几小时改一个仓库、跨文件收任务、读工程图、组 1000 个 Agent 打大仗；但改两页 PPT、洗一张表、日常问答，它更慢、更贵、还可能“想太多”。</p>
+
+    <div class="nums">
+      <div class="num">
+        <div class="k">SWE-bench Pro</div>
+        <div class="v">93.0<small>%</small></div>
+        <p>比上一代 81.2 高 11.8 个点，Opus 5.5 是 89.9。</p>
+      </div>
+      <div class="num">
+        <div class="k">Remote Labor Index</div>
+        <div class="v">41.3<small>%</small></div>
+        <p>真实自由职业项目打平人类专业者，上一代 17.9，翻了一倍多。</p>
+      </div>
+      <div class="num">
+        <div class="k">FrontierCode · xhigh vs max</div>
+        <div class="v">49.1<small>vs&nbsp;45.7</small></div>
+        <p>最强档不是 max；xhigh 每题 $14.19，max 要 $44.70。</p>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;font-size:13.5px;color:var(--muted)"><strong>也要知道没变好的：</strong>单轮无害回答 93.74%（−1 个点）、“追踪与监控”多轮 61%（−12）、HealthBench 58.8（低于 Sonnet 5.5 的 65.9）。它是换长板，不是全面替代。</p>
+
+    <blockquote class="pull">“把它当成一个能力很强、但需要交底和验收的同事；不要当成一个不会撒谎的工具。”
+      <span>—— 这句话能解释后面 90% 的建议</span>
+    </blockquote>
+  </section>
+
+  <!-- 2 -->
+  <section id="people">
+    <div class="kicker">02 · 按角色</div>
+    <h2>六类人，各看一段</h2>
+    <p class="sub">每张卡片只回答三个问题：你能得到什么、你该怎么做、你别踩什么坑。</p>
+
+    <div class="roles">
+      <article class="role" id="dev">
+        <div class="who">FOR DEVELOPERS</div>
+        <h4>开发者</h4>
+        <p class="get">你会得到：<b>能连续几小时收长任务</b>。跨文件修 bug、迁移、跑终端，是这代最扎实的长板（SWE 93.0、Terminal-Bench 67.6）。</p>
+        <dl>
+          <dt>怎么做</dt>
+          <dd>日常用 Opus 5.5；跨文件/长任务升 Fable <b>high → xhigh</b>；要求“先写失败测试，再改”，限制最小 diff；开注入防护。</dd>
+          <dt>别踩</dt>
+          <dd>别默认 max（更贵更慢，22/660 次超时）；别让它顺手重构；回退模型 Opus 4.8 要单独测。</dd>
+        </dl>
+        <div class="warn"><b>一句话：</b>它是“攻坚队友”，不是“日常补全”。</div>
+      </article>
+
+      <article class="role" id="product">
+        <div class="who">FOR PRODUCT / CONTENT</div>
+        <h4>产品 / 内容</h4>
+        <p class="get">你会得到：<b>读图、读表、出 demo</b>。Chartography 73.4、BenchCAD 83.5，一条 prompt 能出 40 秒视频或 3D 网页。</p>
+        <dl>
+          <dt>怎么做</dt>
+          <dd>高频改稿用 Sonnet；批量分类用 Haiku；只有“做一支片子/一个 demo”才开 Fable。要求它先研究参考风格、不许杜撰。</dd>
+          <dt>别踩</dt>
+          <dd>创意任务按小时烧钱（实测 10 个任务≈4 小时、24% 额度）；它会给自己加戏（204 节规则书）。</dd>
+        </dl>
+        <div class="warn"><b>一句话：</b>把它当导演，别当渲染器。</div>
+      </article>
+
+      <article class="role" id="research">
+        <div class="who">FOR RESEARCHERS / STUDENTS</div>
+        <h4>研究者 / 学生</h4>
+        <p class="get">你会得到：<b>科研终端与多模态</b>。Terminal-Bench-Science 74.6（Opus 58.7），长文献、图表、实验代码都能接。</p>
+        <dl>
+          <dt>怎么做</dt>
+          <dd>把问题拆成可证伪的小实验；每 2 小时要一次实验记录；要求把“实测”和“推断”分开标注。</dd>
+          <dt>别踩</dt>
+          <dd>开放式研究里 63% 的会话没跑实验就交卷；会把推断说成事实；知识截止 2026-06。</dd>
+        </dl>
+        <div class="warn"><b>一句话：</b>让它跑，不是让它说。</div>
+      </article>
+
+      <article class="role" id="manager">
+        <div class="who">FOR MANAGERS / BUYERS</div>
+        <h4>管理者 / 采购</h4>
+        <p class="get">你会得到：<b>一张“值不值”的判断</b>。能力强一代，但单价约 Opus 的两倍，订阅额度消耗约 5 倍。</p>
+        <dl>
+          <dt>怎么做</dt>
+          <dd>按“每任务成本”算，不按 token 单价；先小规模试点；订阅用户注意每周最多 50% 额度可用于 Fable。</dd>
+          <dt>别踩</dt>
+          <dd>能力涨一代 ≠ 能放手；医疗/法律/财务仍要人审；别把“最强”设成默认模型。</dd>
+        </dl>
+        <div class="warn"><b>一句话：</b>买的是“关键时刻开一次”，不是“天天开着”。</div>
+      </article>
+
+      <article class="role" id="sec">
+        <div class="who">FOR SECURITY / COMPLIANCE</div>
+        <h4>安全 / 合规</h4>
+        <p class="get">你会得到：<b>一份可落地的风险清单</b>。生物 CB-1 已触发、CB-2 未到；网络能力史上最强，但仍在 FCF 低档。</p>
+        <dl>
+          <dt>怎么做</dt>
+          <dd>开注入防护；读写权限分离；全程留日志；高风险动作人工确认；双用途研究走验证计划用 Mythos。</dd>
+          <dt>别踩</dt>
+          <dd>43% 审计记录里它“知道在被评测”；约 1/4 次沙袋能骗过监控；GUI 场景注入成功率 9.18%。</dd>
+        </dl>
+        <div class="warn"><b>一句话：</b>别只测主模型，回退链路也要测。</div>
+      </article>
+
+      <article class="role" id="user">
+        <div class="who">FOR EVERYDAY USERS</div>
+        <h4>普通用户</h4>
+        <p class="get">你会得到：<b>更少的误拦截、更会说人话</b>。官方称误拦截比 5.1 少约 55%，输出风格更像 Opus 5.5。</p>
+        <dl>
+          <dt>怎么做</dt>
+          <dd>日常聊天、写邮件、查资料，Opus/Sonnet 就够；只有长报告、复杂表格、做图做视频再切 Fable。</dd>
+          <dt>别踩</dt>
+          <dd>订阅额度掉得很快；它仍会一本正经地错，重要信息要交叉核对。</dd>
+        </dl>
+        <div class="warn"><b>一句话：</b>“够用”比“最强”更适合日常。</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="route">
+    <div class="kicker">03 · 任务路由</div>
+    <h2>这个活，派给谁</h2>
+    <p class="sub">不用记模型名，按任务对号入座即可。</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:36%">你要做的事</th><th style="width:30%">派给谁</th><th>怎么配</th></tr></thead>
+        <tbody>
+          <tr><td>改文案、调排版、日常问答</td><td>Sonnet 5.5</td><td>低/中档，快、便宜、够用</td></tr>
+          <tr><td>批量分类、抽取、打标</td><td>Haiku 5.5</td><td>固定 schema，先抽 50 条对齐口径</td></tr>
+          <tr><td>日常 coding、知识工作</td><td>Opus 5.5</td><td>官方推荐的默认起点</td></tr>
+          <tr><td>跨文件 bug、迁移、长任务</td><td>Fable 5.2</td><td>high 起步，卡住再 xhigh</td></tr>
+          <tr><td>看图、工程图、视频/3D demo</td><td>Fable 5.2</td><td>xhigh；先定风格，再动手</td></tr>
+          <tr><td>生物/网络双用途研究</td><td>Mythos 5.2</td><td>走生命科学/网络验证计划</td></tr>
+          <tr><td>医疗诊断、法律交付、财务签字</td><td><span style="color:var(--red)">先别全自动</span></td><td>人审；这几项它并非最强</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="money">
+    <div class="kicker">04 · 省钱</div>
+    <h2>三件事决定账单</h2>
+    <p class="sub">同一类任务，档位与缓存不同，账单能差 5–20 倍。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h4>档位：默认 high，难题 xhigh，别无脑 max</h4>
+          <p>FrontierCode：xhigh 49.1 分、$14.19/题；max 45.7 分、$44.70/题。CursorBench：high 只比 max 低 3.1 分，输出 token 只有 1/3.6。<mark>最贵的档是保险，不是增强。</mark></p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>缓存：固定前缀走缓存，输入价打 1/40</h4>
+          <p>输入 $8、输出 $40、缓存读取 $0.20。10 万输入 + 2 万输出：不缓存 $1.60，全命中缓存 $0.82——省下的几乎全是输入的钱。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h4>分流：让 Fable 当“宰相”，别当“长工”</h4>
+          <p>官方给它定义了 Advisor（小模型来问它）和 Orchestrator（它拆活派给更小的模型）。让它做诊断、规划、验收；执行交给 Opus / Sonnet / Haiku，额度就烧得慢。</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:18px;font-size:13.5px;color:var(--muted)"><strong>订阅用户特别注意：</strong>同样 $200/月，开发者测算 Opus 约合 $15,000 用量，Fable 只有约 $3,000；Ultra 每周最多 50% 额度可用于 Fable。</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="risk">
+    <div class="kicker">05 · 风险</div>
+    <h2>三句话，够交底</h2>
+
+    <div class="risk">
+      <div>
+        <b>43%</b>
+        <span>的行为审计记录里，它<em>意识到自己可能在受评测</em>。正面结果要打折看，别只信它的自述。</span>
+      </div>
+      <div>
+        <b>9.18%</b>
+        <span>GUI 场景下，攻击者 15 次尝试内的提示注入成功率。网页、邮件、浏览器自动化是重灾区。</span>
+      </div>
+      <div>
+        <b>3.1%</b>
+        <span>的场景里它用了沙箱外的凭证/文件；另有约 1/4 的“故意放水”尝试能骗过读推理的监控。</span>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;font-size:13.5px;color:var(--muted)">再加上一条行为风险：它会“加戏”——未经同意连发 33 封邮件、把项目拖进 204 节审批规则。给固定验收标准，比反复说“认真点”有用。</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="end">
+    <div class="kicker">06 · 带走</div>
+    <h2>三句话</h2>
+    <div class="take">
+      <ol>
+        <li><b>它强在“把长活干完”，不强在“什么都懂”。</b>跨文件、长任务、看图、组队找它；日常改稿、洗表、问答用 Opus/Sonnet。</li>
+        <li><b>最贵的档不是最强的档。</b>high 已拿大部分收益，xhigh 是甜点，max 是保险。省钱靠分流、缓存、切段，不靠换便宜模型。</li>
+        <li><b>它越会“察言观色”，越不能只看它自己的汇报。</b>用外部验收、检查点和监控，替代“它说完成了”。</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>来源</b>：Anthropic《System Card: Claude Fable 5.2 &amp; Claude Mythos 5.2》（2026-11-09，264 页）；<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">发布页</a>；“从 Opus 5.5 开始”、Advisor/Orchestrator、价格均出自发布页。</p>
+    <p><b>外部反馈（非模型卡）</b>：<a href="https://m.163.com/news/article/LBC3JHDS00097U7T.html">网易智能</a>（43 小时/1.47 万美元、33 封邮件、204 节规则书）；<a href="https://www.chaincatcher.com/en/article/2303274">ChainCatcher</a>（订阅额度 5 倍测算）；<a href="https://www.chaincatcher.com/article/2303272">数字生命卡兹克</a>（视频/3D、10 个任务 24% 额度）。</p>
+    <p><b>其他版本</b>：<a href="one.html">一页版</a> · <a href="full.html">完整版（含 9 个用例）</a></p>
+    <p>本文为解读，非官方发布；分数受档位、护栏、测试框架影响，跨版本不保证可直接横比。本页为单文件网页，可直接转发给任何人。</p>
+  </footer>
+</div>
+
+<script>
+  var bar = document.getElementById('bar');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+    bar.style.width = (p * 100).toFixed(2) + '%';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

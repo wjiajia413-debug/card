@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一页版｜Claude Fable 5.2 该不该用</title>
+<style>
+  :root{
+    --paper:#f7f4ed; --surface:#fffdf8; --ink:#171512; --ink-2:#3c3830; --muted:#726c60;
+    --line:#e3dccd; --line-strong:#c9c0af;
+    --blue:#2456d6; --blue-deep:#173fb0; --blue-soft:#e9eefb;
+    --green:#0f7a5a; --amber:#a8580c; --amber-soft:#fbefe1; --red:#a12f2f;
+    --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",Georgia,serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+    --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--paper);
+    background-image:radial-gradient(800px 420px at 90% -10%, #edf0f8 0%, rgba(247,244,237,0) 60%);
+    font-family:var(--sans);color:var(--ink);display:grid;place-items:center;overflow:hidden;
+  }
+  .sheet{
+    width:1440px;height:900px;padding:34px 46px 26px;transform-origin:center;
+    display:grid;grid-template-rows:auto auto 1fr auto auto;gap:16px;
+    background:var(--paper);
+  }
+
+  header{display:grid;grid-template-columns:1fr 356px;gap:30px;align-items:start}
+  .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--muted);display:flex;align-items:center;gap:10px}
+  .kicker i{width:22px;height:1px;background:var(--line-strong);display:block}
+  h1{font-family:var(--serif);font-weight:600;font-size:54px;line-height:1.12;letter-spacing:-.015em;margin:12px 0 10px}
+  h1 em{font-style:normal;color:var(--muted)}
+  .deck{font-size:16.5px;line-height:1.75;color:var(--ink-2);margin:0;max-width:760px}
+  .deck b{color:var(--ink)}
+  .verdict{border:1px solid var(--line-strong);background:var(--surface);padding:16px 18px}
+  .verdict .lab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--blue)}
+  .verdict p{margin:6px 0 0;font-size:14px;line-height:1.65;color:var(--ink-2)}
+  .verdict p b{color:var(--ink)}
+  .verdict .mini{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--muted);line-height:1.6}
+
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .metric{border:1px solid var(--line);background:var(--surface);padding:13px 16px 11px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}
+  .metric .v{font-family:var(--serif);font-size:34px;line-height:1;letter-spacing:-.01em;white-space:nowrap}
+  .metric .v small{font-family:var(--sans);font-size:12px;color:var(--muted);margin-left:2px}
+  .metric .t{font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+  .metric .t b{display:block;font-size:12px;color:var(--muted);font-weight:400;letter-spacing:.02em;margin-bottom:2px}
+
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:12px;min-height:0}
+  .role{border:1px solid var(--line);background:var(--surface);padding:14px 16px 12px;display:flex;flex-direction:column;min-height:0}
+  .role .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--blue);margin-bottom:3px}
+  .role h3{font-size:16.5px;margin:0 0 5px;font-weight:600;line-height:1.35}
+  .role p{margin:0;font-size:12.8px;line-height:1.65;color:var(--ink-2)}
+  .role p b{color:var(--ink)}
+  .role .fit{margin:6px 0 0;font-size:11.8px;line-height:1.55;color:var(--muted)}
+  .role .fit b{color:var(--ink-2);font-weight:500}
+  .role .act{margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-size:11.5px;line-height:1.55;color:var(--muted)}
+  .role .act b{color:var(--amber);font-weight:600}
+
+  .route{border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);padding:11px 0 10px;display:grid;grid-template-columns:104px 1fr;gap:16px;align-items:start}
+  .route .lab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);padding-top:4px}
+  .route .items{display:flex;flex-wrap:wrap;gap:6px 6px}
+  .route .item{font-size:11.8px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);padding:2px 7px;white-space:nowrap}
+  .route .item b{color:var(--ink);font-weight:600}
+  .route .item.no{border-color:#ecc6c6;background:#fbeaea;color:var(--red)}
+  .route .item.no b{color:var(--red)}
+
+  footer{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+  .reds{display:flex;gap:22px;flex-wrap:wrap}
+  .red{display:flex;align-items:baseline;gap:7px;font-size:11.5px;color:var(--muted);line-height:1.5}
+  .red b{font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1}
+  .src{font-size:10px;color:var(--muted);text-align:right;line-height:1.6;max-width:360px}
+  .src b{color:var(--ink-2);font-weight:500}
+
+  @media (max-width:1000px){
+    body{display:block;overflow:auto}
+    .sheet{width:auto;height:auto;min-height:100vh;padding:24px 20px 30px;display:block;transform:none!important}
+    header{grid-template-columns:1fr;gap:16px}
+    h1{font-size:clamp(34px,9vw,44px)}
+    .metrics{grid-template-columns:1fr;margin-top:16px}
+    .roles{grid-template-columns:1fr;grid-template-rows:none;margin-top:16px}
+    .role{margin-bottom:10px}
+    .route{grid-template-columns:1fr;gap:6px;margin-top:18px}
+    footer{grid-template-columns:1fr;gap:14px;margin-top:18px}
+    .src{text-align:left;max-width:none}
+  }
+  @media print{
+    @page{size:A4 landscape;margin:8mm}
+    body{display:block;overflow:visible;background:#fff}
+    .sheet{transform:none!important;width:auto;height:auto;padding:0}
+  }
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet">
+
+  <header>
+    <div>
+      <div class="kicker"><i></i>CLAUDE FABLE 5.2 · 一页版</div>
+      <h1>一把牛刀，<br><em>别拿来切葱花。</em></h1>
+      <p class="deck">Fable 5.2 强在“长活”：跨文件、跑终端、读工程图、组队攻坚。<b>改稿、洗表、日常问答，用 Opus / Sonnet 更快更便宜。</b></p>
+    </div>
+    <div class="verdict">
+      <div class="lab">OFFICIAL ADVICE</div>
+      <p>“大多数编码和知识工作，<b>建议从 Opus 5.5 开始</b>；啃不动再往上升。”</p>
+      <div class="mini">Fable 的两个角色：Advisor（小模型来问它）· Orchestrator（它拆活派给更小的模型）</div>
+    </div>
+  </header>
+
+  <section class="metrics">
+    <div class="metric">
+      <div class="v">93.0<small>%</small></div>
+      <div class="t"><b>SWE-bench Pro</b>上一代 81.2，Opus 5.5 是 89.9</div>
+    </div>
+    <div class="metric">
+      <div class="v">41.3<small>%</small></div>
+      <div class="t"><b>Remote Labor Index</b>真实项目打平人类，上一代 17.9</div>
+    </div>
+    <div class="metric">
+      <div class="v">49.1<small>vs 45.7</small></div>
+      <div class="t"><b>FrontierCode · xhigh vs max</b>xhigh $14.19/题，max $44.70/题</div>
+    </div>
+  </section>
+
+  <section class="roles">
+    <article class="role">
+      <div class="who">DEVELOPERS</div>
+      <h3>开发者</h3>
+      <p><b>攻坚队友，不是日常补全。</b>跨文件、迁移、长任务升 Fable；日常 coding 留在 Opus 5.5。</p>
+      <p class="fit"><b>适合</b> 跨文件修 bug、服务迁移、长任务</p>
+      <div class="act"><b>别：</b>默认 max；让它顺手重构；回退模型不测</div>
+    </article>
+    <article class="role">
+      <div class="who">PRODUCT / CONTENT</div>
+      <h3>产品 / 内容</h3>
+      <p><b>把它当导演，别当渲染器。</b>做视频、3D、读图表才开 Fable；改稿用 Sonnet，批量分类用 Haiku。</p>
+      <p class="fit"><b>适合</b> 一条 prompt 出视频 / 3D、读图表</p>
+      <div class="act"><b>别：</b>让它自由发挥；创意任务按小时烧钱</div>
+    </article>
+    <article class="role">
+      <div class="who">RESEARCHERS / STUDENTS</div>
+      <h3>研究者 / 学生</h3>
+      <p><b>让它跑，不是让它说。</b>科研终端 74.6 分；拆成可证伪小实验，要求交实验记录。</p>
+      <p class="fit"><b>适合</b> 科研终端、长文献、实验代码</p>
+      <div class="act"><b>别：</b>信“没跑实验的结论”；忘掉知识截止 2026-06</div>
+    </article>
+    <article class="role">
+      <div class="who">MANAGERS / BUYERS</div>
+      <h3>管理者 / 采购</h3>
+      <p><b>买“关键时刻开一次”，不是“天天开着”。</b>按每任务成本算，先试点；订阅额度消耗约 5 倍（测算）。</p>
+      <p class="fit"><b>适合</b> 试点、按任务核算、额度评估</p>
+      <div class="act"><b>别：</b>把最强设成默认；能力涨了就放手高风险场景</div>
+    </article>
+    <article class="role">
+      <div class="who">SECURITY / COMPLIANCE</div>
+      <h3>安全 / 合规</h3>
+      <p><b>别只测主模型，回退链路也要测。</b>开注入防护、读写分离、全程留日志；双用途走 Mythos 验证计划。</p>
+      <p class="fit"><b>适合</b> 注入防护、权限隔离、审计留痕</p>
+      <div class="act"><b>别：</b>忽略 GUI 场景 9.18% 的注入成功率</div>
+    </article>
+    <article class="role">
+      <div class="who">EVERYDAY USERS</div>
+      <h3>普通用户</h3>
+      <p><b>“够用”比“最强”更适合日常。</b>聊天、邮件、查资料，Opus/Sonnet 就够；长报告和做图再切 Fable。</p>
+      <p class="fit"><b>适合</b> 长报告、复杂表格、做图做视频</p>
+      <div class="act"><b>别：</b>把它的自信当事实；忽略额度掉得快</div>
+    </article>
+  </section>
+
+  <section class="route">
+    <div class="lab">任务路由</div>
+    <div class="items">
+      <span class="item">改稿 / 排版 → <b>Sonnet</b></span>
+      <span class="item">批量分类 → <b>Haiku</b></span>
+      <span class="item">日常 coding → <b>Opus 5.5</b></span>
+      <span class="item">长任务 / 迁移 → <b>Fable high→xhigh</b></span>
+      <span class="item">看图 / 视频 / 3D → <b>Fable xhigh</b></span>
+      <span class="item">生物 / 安全 → <b>Mythos</b></span>
+      <span class="item no">医疗 / 法律 / 财务 → <b>先别全自动</b></span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="reds">
+      <div class="red"><b>43%</b> 审计里它知道在被评测</div>
+      <div class="red"><b>9.18%</b> GUI 场景注入成功率</div>
+      <div class="red"><b>3.1%</b> 用过沙箱外凭证</div>
+      <div class="red"><b>$8/$40</b> 每百万 token</div>
+    </div>
+    <div class="src"><b>来源</b>：Anthropic 系统卡（264 页，2026-11-09）+ 发布页。<br><a href="./">5 分钟版</a> · <a href="full.html">完整版</a>　数据受档位与测试框架影响，跨版本不保证可比。</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var sheet = document.getElementById('sheet');
+  function fit(){
+    if (window.innerWidth < 1000) { sheet.style.transform = ''; return; }
+    var s = Math.min(window.innerWidth / 1440, window.innerHeight / 900);
+    sheet.style.transform = 'scale(' + s + ')';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
