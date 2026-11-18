@@ -163,6 +163,8 @@
     .table-wrap td:first-child::before{display:none}
   }
 
+.up{color:var(--green);font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+  .down{color:var(--red);font-family:var(--mono);font-size:11.5px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -259,23 +261,43 @@
   <section id="g3">
     <div class="kicker">03 · 分数与成本</div>
     <h2>跑分之外，看每任务花多少钱</h2>
-    <p class="sub">官方强调的不是单价，而是“完成一个任务要花多少”。下面左半是分，右半是钱。</p>
+    <p class="sub">同一张表里看三件事：原始分、相对上一代的调整（Δ）、每任务成本。注意：官方表取“各档最佳”，不是同一档位。</p>
 
     <div class="table-wrap">
       <table>
-        <thead><tr><th style="width:34%">项目</th><th style="width:14%">Astra</th><th style="width:14%">Sol</th><th>参照</th></tr></thead>
+        <thead><tr><th style="width:29%">项目</th><th style="width:19%">Astra（Δ 上代）</th><th style="width:18%">Sol（Δ 上代）</th><th>参照</th></tr></thead>
         <tbody>
-          <tr><td>Agents' Last Exam</td><td><b>78.3%</b></td><td>73.0%</td><td>GPT-6 Astra 73.1%；Fable 5.2 落后 5.5 分</td></tr>
-          <tr><td>Terminal-Bench-Science</td><td><b>77.1%</b></td><td>68.0%</td><td>GPT-6 Astra 68.1%；Fable 74.6%</td></tr>
-          <tr><td>FrontierCode 2.0</td><td>44.2%</td><td><b>43.8%</b></td><td>Fable 49.1%；Opus 5.5 45.5%</td></tr>
-          <tr><td>BenchCAD 2.1</td><td><b>82.5</b></td><td>73.1</td><td>Fable 83.5（一分之差）</td></tr>
-          <tr><td>AA-3D</td><td><b>1318</b></td><td>1259</td><td>Fable 1271</td></tr>
-          <tr><td>LifeVal（日常复杂任务）</td><td><b>86.1%</b></td><td>83.8%</td><td>GPT-6 Astra 79.8%</td></tr>
-          <tr><td>Vals Science Index</td><td><b>68.4%</b></td><td>58.5%</td><td>Sol 比上代 59.6% 还退步</td></tr>
-          <tr><td>AA 智能指数</td><td><b>62</b></td><td>57</td><td>Fable 65（第 1）</td></tr>
+          <tr><td>Agents' Last Exam</td><td><b>78.3%</b> <span class="up">+5.2</span></td><td>73.0% <span class="up">+0.5</span></td><td>GPT-6 Astra 73.1%；Fable 落后 5.5 分</td></tr>
+          <tr><td>Terminal-Bench-Science</td><td><b>77.1%</b> <span class="up">+9.0</span></td><td>68.0% <span class="up">+11.0</span></td><td>GPT-6 Astra 68.1%；Fable 74.6%</td></tr>
+          <tr><td>GDPval v2</td><td><b>50.4%</b> <span class="up">+6.2</span></td><td>46.9% <span class="up">+5.4</span></td><td>GPT-6 Astra 44.2%；Gemini 4 Carbon 48.8%</td></tr>
+          <tr><td>AutomationBench</td><td><b>52.4%</b> <span class="up">+11.0</span></td><td>41.2% <span class="up">+5.1</span></td><td>GPT-6 Astra 41.4%；Gemini 4 Carbon 53.9%</td></tr>
+          <tr><td>FrontierCode 2.0</td><td>44.2% <span class="up">+1.4</span></td><td><b>43.8%</b> <span class="up">+4.8</span></td><td>Fable 49.1%；Opus 5.5 45.5%</td></tr>
+          <tr><td>BenchCAD 2.1</td><td><b>82.5</b> <span class="up">+19.9</span></td><td>73.1 <span class="up">+20.5</span></td><td>Fable 83.5（一分之差）</td></tr>
+          <tr><td>AA-3D</td><td><b>1318</b> <span class="up">+150</span></td><td>1259 <span class="up">—</span></td><td>Fable 1271</td></tr>
+          <tr><td>LifeVal（日常复杂任务）</td><td><b>86.1%</b> <span class="up">+6.3</span></td><td>83.8% <span class="up">+4.3</span></td><td>GPT-6 Astra 79.8%</td></tr>
+          <tr><td>Vals Science Index</td><td><b>68.4%</b> <span class="up">+3.3</span></td><td>58.5% <span class="down">−1.1</span></td><td>Sol 比上代 59.6% 还退步</td></tr>
+          <tr><td>SecureSWE</td><td><b>65.7%</b> <span class="up">+17.0</span></td><td>55.6% <span class="up">+5.9</span></td><td>GPT-6 Astra 48.7%；唯一每任务变贵的行</td></tr>
+          <tr><td>AA 智能指数</td><td><b>62</b> <span class="up">+5</span></td><td>57 <span class="up">+2</span></td><td>Fable 65（第 1）</td></tr>
         </tbody>
       </table>
     </div>
+
+    <h3>和 Fable 5.2、Opus 5.5 放在一起</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:22%">模型</th><th>ALE</th><th>TBS</th><th>FrontierCode</th><th>BenchCAD</th><th>AA-3D</th><th>AA 指数</th><th>ALE 每任务</th></tr></thead>
+        <tbody>
+          <tr><td>Claude Fable 5.2</td><td>~72.8</td><td>74.6%</td><td><b>49.1%</b></td><td><b>83.5</b></td><td>1271</td><td><b>65</b></td><td>$60.05</td></tr>
+          <tr><td>GPT-6.2 Astra</td><td><b>78.3%</b></td><td><b>77.1%</b></td><td>44.2%</td><td>82.5</td><td><b>1318</b></td><td>62</td><td><b>$2.89</b></td></tr>
+          <tr><td>GPT-6.2 Sol</td><td>73.0%</td><td>68.0%</td><td>43.8%</td><td>73.1</td><td>1259</td><td>57</td><td>$1.32</td></tr>
+          <tr><td>Claude Opus 5.5</td><td>—</td><td>—</td><td>45.5%</td><td>—</td><td>—</td><td>59</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:12px">Fable 的 ALE 为按“落后 5.5 分”推算的约 72.8；其余为各自公开口径。跨厂商、跨 harness 的分数不保证严格可比。</p>
+
+    <h3>三个口径，别混着比</h3>
+    <p><strong>① 官方自报：</strong>每个模型取自己最好的 effort，适合看上限，不适合直接比“谁更强”。<strong>② 同档位：</strong>FrontierCode 在 max 下 Astra 44.2 / Sol 43.8；但 low 档 Sol 的 LifeVal 只有 25.3%，上代是 66.8%。<strong>③ 同成本：</strong>按每任务成本看，Astra 在 ~$2.9 档领先，Sol 在 ~$1.3 档，Fable 在 ~$60 档但 ALE 只高 5.5 分。AA 指数是独立复合分，不做成本调整。</p>
 
     <div class="table-wrap" style="margin-top:14px">
       <table>
