@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GPT-6.2 Astra / Sol 值得用吗？6 分钟看懂</title>
+<title>GPT-6.2 Astra / Sol 值得用吗？9 分钟看懂</title>
 <meta name="description" content="GPT-6.2 Astra 与 Sol 解读：同价不同命、每任务成本、低档塌方、怎么选。">
 <meta property="og:title" content="Claude Fable 5.2 值得用吗？5 分钟按角色看懂">
 <meta property="og:description" content="官方建议日常从 Opus 5.5 开始；六类人各自怎么用、任务派给谁、怎么省钱。">
@@ -165,6 +165,13 @@
 
 .up{color:var(--green);font-family:var(--mono);font-size:11.5px;white-space:nowrap}
   .down{color:var(--red);font-family:var(--mono);font-size:11.5px;white-space:nowrap}
+
+  .quote{border:1px solid var(--line);background:var(--surface);padding:20px 22px;margin:0 0 12px}
+  .quote .src{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
+  .quote p{margin:0 0 8px;font-size:14.5px;line-height:1.85;color:var(--ink-2)}
+  .quote p:last-of-type{margin-bottom:0}
+  .quote .take{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:13px;color:var(--blue-deep)}
+  .quote .take b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -184,7 +191,7 @@
       <span class="chip">1.05M 上下文 · 128K 输出</span>
       <span class="chip">Astra <b>$8 / $40</b></span>
       <span class="chip">Sol <b>$2 / $10</b></span>
-      <span class="chip">阅读 6–7 分钟</span>
+      <span class="chip">阅读 8–9 分钟</span>
     </div>
   </header>
 
@@ -192,7 +199,9 @@
     <a href="#g1">一句话</a>
     <a href="#g2">两兄弟</a>
     <a href="#g3">跑分与调整</a>
-    <a href="#g4">三个反直觉</a>
+    <a href="#gaa">AA 评测</a>
+    <a href="#gx">推特案例</a>
+    <a href="#g4">反直觉</a>
     <a href="#g5">安全</a>
     <a href="#g6">怎么选</a>
     <a href="#g7">带走</a>
@@ -211,7 +220,7 @@
       </div>
       <div class="num">
         <div class="k">AA 智能指数 · Astra</div>
-        <div class="v">62<small>· 第 2</small></div>
+        <div class="v">62<small>· 前三</small></div>
         <p>仅次于 Fable 5.2 的 65；Sol 是 57，约等于上代旗舰、成本 15%。</p>
       </div>
       <div class="num">
@@ -313,8 +322,90 @@
     <p class="note">272K 输入是价格台阶：超过后输入与缓存翻倍、输出 1.5 倍。长文档场景很容易在这里翻车。</p>
   </section>
 
-  <section id="g4">
-    <div class="kicker">04 · 三个反直觉</div>
+    <section id="gaa">
+    <div class="kicker">04 · 独立评测</div>
+    <h2>AA：同档位比，结论会变</h2>
+    <p class="sub">Artificial Analysis 把 9 项评测压成一个复合分。关键不是 62 vs 65，而是“同一档位下谁更划算”。</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:18%">档位</th><th>Astra 指数</th><th>Fable 指数</th><th>Astra 每任务</th><th>Fable 每任务</th></tr></thead>
+        <tbody>
+          <tr><td>max</td><td>62</td><td><b>65</b></td><td><b>$4.00</b></td><td>$26.54</td></tr>
+          <tr><td>xhigh</td><td><b>62</b></td><td><b>62</b></td><td><b>$2.52</b></td><td>$14.83</td></tr>
+          <tr><td>high</td><td>60</td><td><b>62</b></td><td><b>$2.07</b></td><td>$9.08</td></tr>
+          <tr><td>medium</td><td><b>57</b></td><td>56</td><td><b>$1.62</b></td><td>$3.80</td></tr>
+          <tr><td>low</td><td>46</td><td><b>54</b></td><td><b>$0.66</b></td><td>$3.10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>读法：</b>max 档 Fable 更聪明（65 vs 62），但每任务贵 6.6 倍；medium 档 Astra 反超 1 分，成本只要 43%；low 档两家都别用，Astra 掉到 46。</p>
+
+    <h3>AA 分项：谁在哪赢</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:34%">评测</th><th>Fable max</th><th>Astra max</th><th>赢家</th></tr></thead>
+        <tbody>
+          <tr><td>AA-Briefcase v1.1（Elo）</td><td><b>1785</b></td><td>1643</td><td><span class="tag green">Fable</span></td></tr>
+          <tr><td>AutomationBench-AA</td><td>76.4%</td><td><b>77.2%</b></td><td><span class="tag blue">Astra</span></td></tr>
+          <tr><td>Terminal-Bench 4.0</td><td>59.6%</td><td><b>64.1%</b></td><td><span class="tag blue">Astra</span></td></tr>
+          <tr><td>FrontierCode-AA 2.0</td><td><b>48.8%</b></td><td>45.4%</td><td><span class="tag green">Fable</span></td></tr>
+          <tr><td>AA-Omniscience v1.1</td><td><b>67</b></td><td>50</td><td>Fable（+17）</td></tr>
+          <tr><td>HLE-Diamond</td><td><b>80.2%</b></td><td>72.2%</td><td><span class="tag green">Fable</span></td></tr>
+          <tr><td>Terminal-Bench-Science</td><td>73.3%</td><td><b>78.1%</b></td><td><span class="tag blue">Astra</span></td></tr>
+          <tr><td>CritPt v2（Hard）</td><td><b>76.5%</b></td><td>71.5%</td><td><span class="tag green">Fable</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>结论：</b>Fable 赢在“知识 + 专业判断”（Omniscience、HLE、CritPt、Briefcase、FrontierCode）；Astra 赢在“终端 + 自动化 + 科研工作流”。不是谁全面更强，是偏科方向不同。</p>
+
+    <h3>AA 速度：慢在哪</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width:36%">指标</th><th>Fable 5.2</th><th>Astra</th><th>Sol</th></tr></thead>
+        <tbody>
+          <tr><td>首 token 延迟</td><td>221.5s</td><td>207.1s</td><td><b>78.6s</b></td></tr>
+          <tr><td>输出速度</td><td><b>110 tok/s</b></td><td>50 tok/s</td><td>75 tok/s</td></tr>
+          <tr><td>每任务耗时</td><td>41.6 min</td><td>13.8 min</td><td><b>8.9 min</b></td></tr>
+          <tr><td>AA 指数每任务成本</td><td>$26.54</td><td>$4.00</td><td><b>$1.01</b></td></tr>
+          <tr><td>评测总输出 token</td><td>275M</td><td>65.8M</td><td><b>60.9M</b></td></tr>
+          <tr><td>默认档位</td><td>high</td><td>medium</td><td>medium</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>关键发现：</b>Fable 的评测总输出 token 是 Astra 的 4.2 倍（275M vs 65.8M），每任务耗时是 3 倍（41.6 vs 13.8 分钟）。贵不只贵在单价，也贵在“话多 + 慢”。</p>
+  </section>
+
+  <section id="gx">
+    <div class="kicker">05 · 推特实测</div>
+    <h2>跑分第二，为什么有人骂“没法用”</h2>
+    <p class="sub">以下为 X / 开发者公开反馈，不是官方结论。每条都标了出处。</p>
+
+    <div class="quote">
+      <div class="src">THEO · X 长文《Why I hate GPT-6.2 Astra》 <a href="https://x.com/theo/status/2122760447103484410">原文</a></div>
+      <p>“我不喜欢 6.2 Astra。作为开发者，我不会用它替代 Opus 5.5。”</p>
+      <p>他让 Astra 重写 ts-rust：跑了 <b>7 天</b>，0 改进，还把编译器弄慢 <b>56%</b>；再跑 4 天，0 变化。同一个项目，Opus 5.5 不到两周做完，花了约 $20k token。</p>
+      <p>另一个例子：让 Astra 做《Outer Wilds》新关卡，2 小时后它“卡住”了，问的是“r24 的 reviewer 把片段写成 24_g521.mp4 还是 24_p11.mp4”。</p>
+      <div class="take"><b>说明什么：</b>它不缺智商，缺“知道自己不知道什么”。长任务里，一个无法回答的问题就能让整条链路停摆。</div>
+    </div>
+
+    <div class="quote">
+      <div class="src">THEO · 同一篇里的正面</div>
+      <p>“代码审查很强，能抓到别的模型漏掉的东西；偶尔会给出真正新颖的方案——帮我设计了一套反向代理，每月省 <b>$25k</b>；3D 和游戏世界级；computer use 很猛。”</p>
+      <div class="take"><b>说明什么：</b>它不是“全面差”，是“偏科”。评审、3D、GUI 操作是强项；长程自主执行是短板。</div>
+    </div>
+
+    <div class="quote">
+      <div class="src">DAN SHIPPER / MATT SHUMER · 36氪、X</div>
+      <p>Dan Shipper 团队：Astra 写作不如上一代，过度追求简洁；编程接近上一代，但经常在真实项目里提前停；设计容易产出高度相似的作品。Matt Shumer 更直接：测试体验太糟，两款模型“基本无法使用”，不打算做完整评测。</p>
+      <div class="take"><b>说明什么：</b>这不是个例。问题集中在“长任务停摆、解释不清、审美同质化”，正好是 Agent 最需要的三项。</div>
+    </div>
+
+    <p class="note"><b>反方：</b>开发者 Pietro Schirano 认为不少问题来自外围 Agent harness，移除后 Astra 明显改善；APPSO 的实测也说“远没有网上说的那么糟”。所以别用一条推文判死刑，先放进自己的工作流跑一周。</p>
+  </section>
+
+<section id="g4">
+    <div class="kicker">06 · 三个反直觉</div>
     <h2>便宜是真的，难用也是真的</h2>
 
     <div class="steps">
@@ -340,7 +431,7 @@
   </section>
 
   <section id="g5">
-    <div class="kicker">05 · 安全</div>
+    <div class="kicker">07 · 安全</div>
     <h2>这代最该注意的三件事</h2>
 
     <div class="risk">
@@ -362,7 +453,7 @@
   </section>
 
   <section id="g6">
-    <div class="kicker">06 · 怎么选</div>
+    <div class="kicker">08 · 怎么选</div>
     <h2>这个活，派给谁</h2>
 
     <div class="table-wrap">
@@ -381,7 +472,7 @@
   </section>
 
   <section id="g7">
-    <div class="kicker">07 · 谁该换</div>
+    <div class="kicker">09 · 谁该换</div>
     <h2>该换的，和别急的</h2>
 
     <div class="two-col">
