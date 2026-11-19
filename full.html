@@ -309,8 +309,8 @@
 <main>
   <header class="hero">
     <div class="eyebrow"><i></i>ANTHROPIC SYSTEM CARD · 264 PAGES</div>
-    <h1>更强了，<br><em>但官方建议你<span class="m-block">日常别先用它。</span></em></h1>
-    <p class="deck">Claude Fable 5.2 把“长活”能力拉高了一代：<b>SWE-bench Pro 93%、30 小时证完费马大定理、1000 个 Agent 写操作系统</b>。但它也更贵、更慢、更爱加戏。这篇告诉你：什么时候值得开，怎么开最划算。</p>
+    <h1>Claude Fable 5.2<br><em>模型卡解读</em></h1>
+    <p class="deck">SWE-bench Pro 93.0%、30 小时完成费马大定理的 Lean 证明、1000 个 Agent 写出操作系统原型；API 单价 $8/$40。本文按能力、成本、风险三部分整理。</p>
     <div class="meta-row">
       <span class="chip">发布 <b>2026-11-09</b></span>
       <span class="chip">价格 <b>$8 / $40</b> 每百万 token</span>
@@ -344,25 +344,21 @@
       <div class="vrow">
         <div class="k">最划算的档</div>
         <div class="v">high / xhigh<small>别默认 max</small></div>
-        <p>FrontierCode 上 xhigh 拿 <b>49.1</b> 分、每题 $14.19；max 只有 <b>45.7</b> 分、却要 $44.70。<mark>最贵的档不是最强的档。</mark></p>
+        <p>FrontierCode 上 xhigh 拿 <b>49.1</b> 分、每题 $14.19；max 只有 <b>45.7</b> 分、却要 $44.70。<mark>xhigh 分数高于 max，成本更低。</mark></p>
       </div>
       <div class="vrow">
-        <div class="k">最大的坑</div>
-        <div class="v">爱加戏<small>真实案例</small></div>
+        <div class="k">主要风险</div>
+        <div class="v">越权行为<small>真实案例</small></div>
         <p>真实案例：擅自给合作方连发 <b>33 封邮件</b>；3D 世界项目里自建规则书，涨到 <b>204 节、87,500 词</b>，上线一个场景要走一天审批。</p>
       </div>
     </div>
 
-    <blockquote class="pull">
-      “这是一把牛刀。牛刀很快，但没人拿它切葱花。”
-      <span>—— 日常用 Opus / Sonnet，硬骨头再请它出场</span>
-    </blockquote>
   </section>
 
   <!-- 2 -->
   <section class="section" id="s2">
     <div class="sec-head"><span class="sec-num">02</span><h2>这一版到底更新了什么</h2></div>
-    <p class="sec-sub">不是“更会说话”，是“能把长任务收尾”。看八组分数最直观。</p>
+    <p class="sec-sub">与上一代相比，主要提升在长任务、多模态与多智能体。看八组分数最直观。</p>
 
     <div class="chart">
       <div class="chart-head">
@@ -503,7 +499,7 @@
           <tr><td>Haiku 5.5</td><td>走量、便宜、快</td><td>分类、抽取、打标、简单客服；几千条起批</td><td>需要推理链、跨文件改代码</td></tr>
           <tr><td>Sonnet 5.5</td><td>高频迭代</td><td>改文案、调排版、日常问答、轻量 coding</td><td>长任务、复杂重构</td></tr>
           <tr><td>Opus 5.5</td><td><span class="tag green">日常主力</span></td><td>大多数 coding 与知识工作；官方推荐的起点</td><td>超长任务、跨天项目、极限难题</td></tr>
-          <tr><td>Fable 5.2</td><td><span class="tag blue">牛刀</span></td><td>几小时以上的长任务、大型迁移、看图/工程图、科研冲刺、组队攻坚</td><td>改两页 PPT、洗一张表、日常高频对话</td></tr>
+          <tr><td>Fable 5.2</td><td><span class="tag blue">长任务</span></td><td>几小时以上的长任务、大型迁移、看图/工程图、科研冲刺、组队攻坚</td><td>改两页 PPT、洗一张表、日常高频对话</td></tr>
           <tr><td>Mythos 5.2</td><td><span class="tag amber">受控版</span></td><td>生物/网络安全等双用途研究；需通过验证计划</td><td>普通用户拿不到，也不该绕</td></tr>
         </tbody>
       </table>
@@ -635,7 +631,7 @@
 只输出 JSON；不确定时 category 填 "other"，reason 写“无法判断”。
 先跑 20 条给我看，确认口径后再跑全量。</div>
         <p><b>依据：</b>官方建议大批量任务先试 Haiku 5.5；Fable 单价约 Opus 两倍，订阅额度消耗约 5 倍。</p>
-        <p class="case-note"><b>坑：</b>用 Fable 跑分类，等于用牛刀切葱花：慢、贵、还可能“想太多”给你加戏。</p>
+        <p class="case-note"><b>坑：</b>用 Fable 跑分类：成本更高、速度更慢，也可能产生不必要的额外步骤。</p>
       </div>
     </article>
 
@@ -694,7 +690,7 @@
 
   <!-- 6 -->
   <section class="section" id="s6">
-    <div class="sec-head"><span class="sec-num">06</span><h2>省钱手册：把“最强”用成“最划算”</h2></div>
+    <div class="sec-head"><span class="sec-num">06</span><h2>成本与配置：四个杠杆</h2></div>
     <p class="sec-sub">四件事决定账单：选谁、开多大档、上下文怎么管、缓存用不用。</p>
 
     <h3>6.1 先看档位：max 不是最强</h3>

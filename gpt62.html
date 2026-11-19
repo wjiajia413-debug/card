@@ -189,8 +189,8 @@
 
   <header class="hero">
     <div class="eyebrow">OPENAI · GPT-6.2 ASTRA / SOL · 2026-11-17</div>
-    <h1>同价，<br><em>不同命。</em></h1>
-    <p class="deck">Astra 和 Claude Fable 5.2 都是 <b>$8/$40</b>；但在长程专业任务上，Astra 平均每个任务只花 <b>$2.89</b>，Fable 是 <b>$60.05</b>。这一代主打的不是“更聪明”，而是“更便宜地把活干完”。</p>
+    <h1>GPT-6.2 Astra 与 Sol<br><em>跑分、成本与场景</em></h1>
+    <p class="deck">Astra 与 Claude Fable 5.2 的 API 单价同为 <b>$8/$40</b>；在 Agents' Last Exam 上，Astra 平均每任务 <b>$2.89</b>，Fable 为 <b>$60.05</b>。下面是分数、成本与适用场景的对比。</p>
     <div class="meta">
       <span class="chip">1.05M 上下文 · 128K 输出</span>
       <span class="chip">Astra <b>$8 / $40</b></span>
@@ -200,21 +200,21 @@
   </header>
 
   <div class="roles-nav">
-    <a href="#g1">一句话</a>
-    <a href="#g2">两兄弟</a>
+    <a href="#g1">概览</a>
+    <a href="#g2">两个型号</a>
     <a href="#g3">跑分与调整</a>
-    <a href="#gaa">AA 评测</a>
-    <a href="#gx">推特案例</a>
-    <a href="#g4">反直觉</a>
+    <a href="#gaa">AA 数据</a>
+    <a href="#gx">开发者反馈</a>
+    <a href="#g4">注意事项</a>
     <a href="#g5">安全</a>
-    <a href="#g6">怎么选</a>
-    <a href="#g7">带走</a>
+    <a href="#g6">选型</a>
+    <a href="#g7">要点</a>
   </div>
 
   <section id="g1" style="border-top:none;margin-top:0;padding-top:36px">
-    <div class="kicker">01 · 一句话</div>
-    <h2>Astra 干硬活，Sol 干日常</h2>
-    <p>同一个底座、同样 1.05M 上下文；Astra 贵 4 倍，任务是“把难项目做完”，Sol 是“日常默认”。真正的卖点不是跑分，是每任务成本。</p>
+    <div class="kicker">01 · 概览</div>
+    <h2>Astra 与 Sol 的定位</h2>
+    <p>两个型号共用 1.05M 上下文。Astra 单价是 Sol 的 4 倍，面向长任务、专业交付、工程与科研；Sol 面向日常编码、写作与多步 Agent。</p>
 
     <div class="nums">
       <div class="num">
@@ -238,27 +238,27 @@
   </section>
 
   <section id="g2">
-    <div class="kicker">02 · 两兄弟</div>
-    <h2>一个负责难，一个负责多</h2>
-    <p class="sub">不是“大小号”，是两种工作分工。</p>
+    <div class="kicker">02 · 两个型号</div>
+    <h2>两个型号的能力与成本</h2>
+    <p class="sub">同一底座，不同定价与任务定位。</p>
 
     <div class="roles">
       <article class="role">
         <div class="who">GPT-6.2 ASTRA · $8 / $40</div>
-        <h4>硬活旗舰</h4>
-        <p class="get">跨服务查 bug、DCF/PPT/法律交付、CAD/3D、科研终端。它要解决的是“这件事能不能做完”，不是“回得多漂亮”。</p>
+        <h4>Astra：长任务与专业交付</h4>
+        <p class="get">跨服务查 bug、DCF/PPT/法律交付、CAD/3D、科研终端。覆盖跨服务 bug、专业交付、CAD/3D、科研终端。</p>
         <dl>
           <dt>适合</dt>
           <dd>几小时以上的长任务、专业交付物、工程/科研、需要调用一堆工具的活。</dd>
           <dt>别用</dt>
           <dd>当日常默认（贵、慢）；低档（low）跑生产；需要它把过程解释得特别清楚的场景。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>它是“项目负责人”，不是“随手问一句”。</div>
+        <div class="warn"><b>定位：</b>长任务、专业交付、工程/科研。</div>
       </article>
 
       <article class="role">
         <div class="who">GPT-6.2 SOL · $2 / $10</div>
-        <h4>日常默认</h4>
+        <h4>Sol：日常编码与写作</h4>
         <p class="get">审 PR、按 review 意见改代码、会议纪要、成本敏感的多步 Agent。官方说 OpenAI 内部很多员工拿它当默认模型。</p>
         <dl>
           <dt>适合</dt>
@@ -266,7 +266,7 @@
           <dt>别用</dt>
           <dd>科研、安全代码、业务自动化（落后 Astra 9–11 分）；low 档（会塌方）；指望它做 3D/CAD 硬活。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>它是“日常主力”，不是“便宜版 Astra”。</div>
+        <div class="warn"><b>定位：</b>日常 coding、写作、批量任务。</div>
       </article>
     </div>
   </section>
@@ -328,8 +328,8 @@
 
     <section id="gaa">
     <div class="kicker">04 · 独立评测</div>
-    <h2>AA：同档位比，结论会变</h2>
-    <p class="sub">Artificial Analysis 把 9 项评测压成一个复合分。关键不是 62 vs 65，而是“同一档位下谁更划算”。</p>
+    <h2>AA：同档位下的分数与成本</h2>
+    <p class="sub">Artificial Analysis 把 9 项评测压成一个复合分。下表为同一档位下的指数与每任务成本。</p>
 
     <div class="table-wrap">
       <table>
@@ -343,9 +343,9 @@
         </tbody>
       </table>
     </div>
-    <p class="note"><b>读法：</b>max 档 Fable 更聪明（65 vs 62），但每任务贵 6.6 倍；medium 档 Astra 反超 1 分，成本只要 43%；low 档两家都别用，Astra 掉到 46。</p>
+    <p class="note"><b>读法：</b>max 档 Fable 65、Astra 62；Astra 每任务 $4.00，Fable $26.54。medium 档 Astra 57、Fable 56，成本 $1.62 vs $3.80。low 档 Astra 46、Fable 54。</p>
 
-    <h3>AA 分项：谁在哪赢</h3>
+    <h3>AA 分项：Fable 与 Astra</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th style="width:34%">评测</th><th>Fable max</th><th>Astra max</th><th>赢家</th></tr></thead>
@@ -361,9 +361,9 @@
         </tbody>
       </table>
     </div>
-    <p class="note"><b>结论：</b>Fable 赢在“知识 + 专业判断”（Omniscience、HLE、CritPt、Briefcase、FrontierCode）；Astra 赢在“终端 + 自动化 + 科研工作流”。不是谁全面更强，是偏科方向不同。</p>
+    <p class="note"><b>结论：</b>Fable 在知识/专业判断类（Omniscience、HLE、CritPt、Briefcase、FrontierCode）领先；Astra 在终端、自动化、科研工作流领先。</p>
 
-    <h3>AA 速度：慢在哪</h3>
+    <h3>AA 速度：延迟、吞吐与耗时</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th style="width:36%">指标</th><th>Fable 5.2</th><th>Astra</th><th>Sol</th></tr></thead>
@@ -377,12 +377,12 @@
         </tbody>
       </table>
     </div>
-    <p class="note"><b>关键发现：</b>Fable 的评测总输出 token 是 Astra 的 4.2 倍（275M vs 65.8M），每任务耗时是 3 倍（41.6 vs 13.8 分钟）。贵不只贵在单价，也贵在“话多 + 慢”。</p>
+    <p class="note"><b>关键发现：</b>Fable 的评测总输出 token 是 Astra 的 4.2 倍（275M vs 65.8M），每任务耗时是 3 倍（41.6 vs 13.8 分钟）。</p>
   </section>
 
   <section id="gx">
     <div class="kicker">05 · 推特实测</div>
-    <h2>跑分第二，为什么有人骂“没法用”</h2>
+    <h2>开发者实测：正面与负面反馈</h2>
     <p class="sub">以下为 X / 开发者公开反馈，不是官方结论。每条都标了出处。</p>
 
     <div class="quote">
@@ -390,45 +390,45 @@
       <p>“我不喜欢 6.2 Astra。作为开发者，我不会用它替代 Opus 5.5。”</p>
       <p>他让 Astra 重写 ts-rust：跑了 <b>7 天</b>，0 改进，还把编译器弄慢 <b>56%</b>；再跑 4 天，0 变化。同一个项目，Opus 5.5 不到两周做完，花了约 $20k token。</p>
       <p>另一个例子：让 Astra 做《Outer Wilds》新关卡，2 小时后它“卡住”了，问的是“r24 的 reviewer 把片段写成 24_g521.mp4 还是 24_p11.mp4”。</p>
-      <div class="take"><b>说明什么：</b>它不缺智商，缺“知道自己不知道什么”。长任务里，一个无法回答的问题就能让整条链路停摆。</div>
+      <div class="take"><b>影响：</b>长任务中，一个无法回答的问题会导致任务停摆。</div>
     </div>
 
     <div class="quote">
       <div class="src">THEO · 同一篇里的正面</div>
       <p>“代码审查很强，能抓到别的模型漏掉的东西；偶尔会给出真正新颖的方案——帮我设计了一套反向代理，每月省 <b>$25k</b>；3D 和游戏世界级；computer use 很猛。”</p>
-      <div class="take"><b>说明什么：</b>它不是“全面差”，是“偏科”。评审、3D、GUI 操作是强项；长程自主执行是短板。</div>
+      <div class="take"><b>强项与短板：</b>代码审查、3D、GUI 操作是强项；长程自主执行是短板。</div>
     </div>
 
     <div class="quote">
       <div class="src">DAN SHIPPER / MATT SHUMER · 36氪、X</div>
       <p>Dan Shipper 团队：Astra 写作不如上一代，过度追求简洁；编程接近上一代，但经常在真实项目里提前停；设计容易产出高度相似的作品。Matt Shumer 更直接：测试体验太糟，两款模型“基本无法使用”，不打算做完整评测。</p>
-      <div class="take"><b>说明什么：</b>这不是个例。问题集中在“长任务停摆、解释不清、审美同质化”，正好是 Agent 最需要的三项。</div>
+      <div class="take"><b>反馈集中在：</b>长任务停摆、解释不清、设计同质化。</div>
     </div>
 
-    <p class="note"><b>反方：</b>开发者 Pietro Schirano 认为不少问题来自外围 Agent harness，移除后 Astra 明显改善；APPSO 的实测也说“远没有网上说的那么糟”。所以别用一条推文判死刑，先放进自己的工作流跑一周。</p>
+    <p class="note"><b>反方：</b>开发者 Pietro Schirano 认为不少问题来自外围 Agent harness，移除后 Astra 明显改善；APPSO 的实测也说“远没有网上说的那么糟”。建议结合自己的任务实测，不只看单条反馈。</p>
   </section>
 
 <section id="g4">
     <div class="kicker">06 · 三个反直觉</div>
-    <h2>便宜是真的，难用也是真的</h2>
+    <h2>三个值得注意的结果</h2>
 
     <div class="steps">
       <div class="step">
         <div>
-          <h4>同价，任务成本却只有 5%</h4>
+          <h4>同价，任务成本约为 5%</h4>
           <p>Astra 和 Fable 5.2 单价完全一样，都是 $8/$40；但 ALE 上 Astra 每任务 $2.89，Fable $60.05。<mark>省的不是单价，是 token 和步骤</mark>——它用更少的尝试把活干完。这也是“每任务成本”开始取代“每百万 token 单价”的原因。</p>
         </div>
       </div>
       <div class="step">
         <div>
-          <h4>Sol 的低档会塌方</h4>
-          <p>LifeVal 上，Sol 用 low 只有 <b>25.3%</b>，上一代 GPT-6.1 Sol 是 66.8%；Astra 用 low 也只有 46.3%，上代是 67.5%。很多生产环境为了省延迟默认 low——这代<mark>至少从 medium 起步</mark>，别直接迁。</p>
+          <h4>Sol 在低档位分数下降明显</h4>
+          <p>LifeVal 上，Sol 用 low 只有 <b>25.3%</b>，上一代 GPT-6.1 Sol 是 66.8%；Astra 用 low 也只有 46.3%，上代是 67.5%。生产环境若默认 low，需要先实测；建议<mark>从 medium 起步</mark>。</p>
         </div>
       </div>
       <div class="step">
         <div>
-          <h4>跑分第二，体验挨骂</h4>
-          <p>AA 的 Coding Agent 指数里，Astra 与上代持平、Sol 还掉了 3 分（SWE-Atlas-QnA-AA 掉 14 分，因为更爱省略关键事实）。开发者吐槽集中在：跑了 11 天的迁移没进展、编译器反而慢 56%、卡在“文件该叫什么”这种问题上；写东西过度简洁、提前停。AA 测的幻觉率：Astra 59%、Sol 55%。</p>
+          <h4>第三方指数与开发者体验存在差异</h4>
+          <p>AA 的 Coding Agent 指数里，Astra 与上代持平、Sol 还掉了 3 分（SWE-Atlas-QnA-AA 掉 14 分，因为更爱省略关键事实）。开发者反馈集中在：跑了 11 天的迁移没进展、编译器反而慢 56%、卡在“文件该叫什么”这种问题上；写东西过度简洁、提前停。AA 测的幻觉率：Astra 59%、Sol 55%。</p>
         </div>
       </div>
     </div>
@@ -436,7 +436,7 @@
 
   <section id="g5">
     <div class="kicker">07 · 安全</div>
-    <h2>这代最该注意的三件事</h2>
+    <h2>安全评估：三个等级</h2>
 
     <div class="risk">
       <div>
@@ -477,11 +477,11 @@
 
   <section id="g7">
     <div class="kicker">09 · 谁该换</div>
-    <h2>该换的，和别急的</h2>
+    <h2>适用与不适用场景</h2>
 
     <div class="two-col">
       <div class="col">
-        <h4>该换</h4>
+        <h4>适合升级</h4>
         <ul>
           <li>已经在用 GPT-6 Astra：同价、同上下文，任务成本约降到 1/3</li>
           <li>做 3D / CAD / 工程设计的团队：AA-3D 第一、BenchCAD 82.5</li>
@@ -490,7 +490,7 @@
         </ul>
       </div>
       <div class="col">
-        <h4>别急</h4>
+        <h4>暂不建议</h4>
         <ul>
           <li>普通 ChatGPT 用户：只在 Work / Codex / API，没进普通 Chat</li>
           <li>生产环境默认 low 档：先解决“低档塌方”</li>

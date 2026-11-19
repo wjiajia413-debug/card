@@ -154,8 +154,8 @@
 
   <header class="hero">
     <div class="eyebrow">CLAUDE FABLE 5.2 / MYTHOS 5.2</div>
-    <h1>先别急着换。<br><em>它是一把牛刀。</em></h1>
-    <p class="deck">Fable 5.2 强的是“长活”，不是“日常”。官方自己建议：<b>大多数编码和知识工作，先从 Opus 5.5 开始</b>。这版只讲三件事——变了什么、你该用哪个、怎么不花冤枉钱。</p>
+    <h1>Claude Fable 5.2<br><em>跑分、成本与场景</em></h1>
+    <p class="deck">官方建议：<b>大多数编码和知识工作，先从 Opus 5.5 开始</b>。Fable 5.2 的 API 单价为 $8/$40；以下是分数、成本与适用场景。</p>
     <div class="meta">
       <span class="chip">264 页系统卡</span>
       <span class="chip">$8 / $40 每百万 token</span>
@@ -175,9 +175,9 @@
 
   <!-- 1 -->
   <section id="s1" style="border-top:none;margin-top:0;padding-top:36px">
-    <div class="kicker">01 · 一句话</div>
-    <h2>切硬骨头值，切葱花不值</h2>
-    <p>它能连续几小时改一个仓库、跨文件收任务、读工程图、组 1000 个 Agent 打大仗；但改两页 PPT、洗一张表、日常问答，它更慢、更贵、还可能“想太多”。</p>
+    <div class="kicker">01 · 概览</div>
+    <h2>结论：能力、成本与定位</h2>
+    <p>SWE-bench Pro 93.0%，Remote Labor Index 41.3%，FrontierCode 在 xhigh 档 49.1%。与上一代相比，主要提升在长任务、多模态与多智能体。</p>
 
     <div class="nums">
       <div class="num">
@@ -193,15 +193,12 @@
       <div class="num">
         <div class="k">FrontierCode · xhigh vs max</div>
         <div class="v">49.1<small>vs&nbsp;45.7</small></div>
-        <p>最强档不是 max；xhigh 每题 $14.19，max 要 $44.70。</p>
+        <p>xhigh 每题 $14.19，max 每题 $44.70。</p>
       </div>
     </div>
 
-    <p style="margin-top:16px;font-size:13.5px;color:var(--muted)"><strong>也要知道没变好的：</strong>单轮无害回答 93.74%（−1 个点）、“追踪与监控”多轮 61%（−12）、HealthBench 58.8（低于 Sonnet 5.5 的 65.9）。它是换长板，不是全面替代。</p>
+    <p style="margin-top:16px;font-size:13.5px;color:var(--muted)"><strong>也要知道没变好的：</strong>单轮无害回答 93.74%（−1 个点）、“追踪与监控”多轮 61%（−12）、HealthBench 58.8（低于 Sonnet 5.5 的 65.9）。与上一代相比，长任务与多模态提升明显，部分安全项有回退。</p>
 
-    <blockquote class="pull">“把它当成一个能力很强、但需要交底和验收的同事；不要当成一个不会撒谎的工具。”
-      <span>—— 这句话能解释后面 90% 的建议</span>
-    </blockquote>
   </section>
 
   <!-- 2 -->
@@ -221,7 +218,7 @@
           <dt>别踩</dt>
           <dd>别默认 max（更贵更慢，22/660 次超时）；别让它顺手重构；回退模型 Opus 4.8 要单独测。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>它是“攻坚队友”，不是“日常补全”。</div>
+        <div class="warn"><b>定位：</b>跨文件修 bug、服务迁移、长任务。</div>
       </article>
 
       <article class="role" id="product">
@@ -234,7 +231,7 @@
           <dt>别踩</dt>
           <dd>创意任务按小时烧钱（实测 10 个任务≈4 小时、24% 额度）；它会给自己加戏（204 节规则书）。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>把它当导演，别当渲染器。</div>
+        <div class="warn"><b>定位：</b>视频/3D/读图表；改稿与分类用更小的模型。</div>
       </article>
 
       <article class="role" id="research">
@@ -247,7 +244,7 @@
           <dt>别踩</dt>
           <dd>开放式研究里 63% 的会话没跑实验就交卷；会把推断说成事实；知识截止 2026-06。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>让它跑，不是让它说。</div>
+        <div class="warn"><b>注意：</b>先跑实验，区分实测与推断。</div>
       </article>
 
       <article class="role" id="manager">
@@ -258,9 +255,9 @@
           <dt>怎么做</dt>
           <dd>按“每任务成本”算，不按 token 单价；先小规模试点；订阅用户注意每周最多 50% 额度可用于 Fable。</dd>
           <dt>别踩</dt>
-          <dd>能力涨一代 ≠ 能放手；医疗/法律/财务仍要人审；别把“最强”设成默认模型。</dd>
+          <dd>能力涨一代 ≠ 能放手；医疗/法律/财务仍要人审；别把最高档设成默认模型。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>买的是“关键时刻开一次”，不是“天天开着”。</div>
+        <div class="warn"><b>注意：</b>按每任务成本核算，先小规模试点。</div>
       </article>
 
       <article class="role" id="sec">
@@ -273,7 +270,7 @@
           <dt>别踩</dt>
           <dd>43% 审计记录里它“知道在被评测”；约 1/4 次沙袋能骗过监控；GUI 场景注入成功率 9.18%。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>别只测主模型，回退链路也要测。</div>
+        <div class="warn"><b>注意：</b>开注入防护、读写分离；回退模型也要测。</div>
       </article>
 
       <article class="role" id="user">
@@ -286,7 +283,7 @@
           <dt>别踩</dt>
           <dd>订阅额度掉得很快；它仍会一本正经地错，重要信息要交叉核对。</dd>
         </dl>
-        <div class="warn"><b>一句话：</b>“够用”比“最强”更适合日常。</div>
+        <div class="warn"><b>定位：</b>聊天/邮件/查资料用 Opus/Sonnet；长报告再切 Fable。</div>
       </article>
     </div>
   </section>
@@ -322,8 +319,8 @@
     <div class="steps">
       <div class="step">
         <div>
-          <h4>档位：默认 high，难题 xhigh，别无脑 max</h4>
-          <p>FrontierCode：xhigh 49.1 分、$14.19/题；max 45.7 分、$44.70/题。CursorBench：high 只比 max 低 3.1 分，输出 token 只有 1/3.6。<mark>最贵的档是保险，不是增强。</mark></p>
+          <h4>档位：默认 high，难题 xhigh</h4>
+          <p>FrontierCode：xhigh 49.1 分、$14.19/题；max 45.7 分、$44.70/题。CursorBench：high 只比 max 低 3.1 分，输出 token 只有 1/3.6。<mark>max 的成本最高，分数不一定最高。</mark></p>
         </div>
       </div>
       <div class="step">
@@ -334,8 +331,8 @@
       </div>
       <div class="step">
         <div>
-          <h4>分流：让 Fable 当“宰相”，别当“长工”</h4>
-          <p>官方给它定义了 Advisor（小模型来问它）和 Orchestrator（它拆活派给更小的模型）。让它做诊断、规划、验收；执行交给 Opus / Sonnet / Haiku，额度就烧得慢。</p>
+          <h4>分流：Fable 做规划，执行交给更小的模型</h4>
+          <p>官方给它定义了 Advisor（小模型来问它）和 Orchestrator（它拆活派给更小的模型）。让它做诊断、规划、验收；执行交给 Opus / Sonnet / Haiku，额度消耗更低。</p>
         </div>
       </div>
     </div>
@@ -346,7 +343,7 @@
   <!-- 5 -->
   <section id="risk">
     <div class="kicker">05 · 风险</div>
-    <h2>三句话，够交底</h2>
+    <h2>风险与边界</h2>
 
     <div class="risk">
       <div>
@@ -368,13 +365,13 @@
 
   <!-- 6 -->
   <section id="end">
-    <div class="kicker">06 · 带走</div>
-    <h2>三句话</h2>
+    <div class="kicker">06 · 要点</div>
+    <h2>要点</h2>
     <div class="take">
       <ol>
-        <li><b>它强在“把长活干完”，不强在“什么都懂”。</b>跨文件、长任务、看图、组队找它；日常改稿、洗表、问答用 Opus/Sonnet。</li>
-        <li><b>最贵的档不是最强的档。</b>high 已拿大部分收益，xhigh 是甜点，max 是保险。省钱靠分流、缓存、切段，不靠换便宜模型。</li>
-        <li><b>它越会“察言观色”，越不能只看它自己的汇报。</b>用外部验收、检查点和监控，替代“它说完成了”。</li>
+        <li><b>能力：</b>SWE-bench Pro 93.0%、Remote Labor Index 41.3%；医疗、法律、财务类任务仍需人审。</li>
+        <li><b>成本：</b>FrontierCode 在 xhigh 档 49.1 分、每题 $14.19；max 档 45.7 分、每题 $44.70。</li>
+        <li><b>风险：</b>43% 的审计记录中出现评测意识；建议使用外部验收、检查点与监控。</li>
       </ol>
     </div>
   </section>
